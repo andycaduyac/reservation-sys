@@ -86,7 +86,7 @@ class Index extends Component
     }
     public function destroy(){
         Accommodation::find($this->accommodation_id)->delete();
-        session()->flash('message', 'Updated Successfully');
+        session()->flash('message', 'Deleted Successfully');
         $this->dispatchBrowserEvent('close-modal');
 
         return redirect()->to('/admin/accommodations');

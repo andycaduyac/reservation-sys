@@ -29,7 +29,7 @@ class Index extends Component
     {
         $this->validate([
             'book_date' => 'required|date',
-            'accommodation_id' => 'required|numeric',
+            'accommodation_id' => 'required',
         ]);
 
         // Execution doesn't reach here if validation fails.
@@ -42,7 +42,9 @@ class Index extends Component
         session()->flash('message', 'Added Successfully');
         $this->dispatchBrowserEvent('close-modal');
         $this->resetInput();
+
         return redirect()->to('/admin/bookings');
+
     }
 
     public function render()

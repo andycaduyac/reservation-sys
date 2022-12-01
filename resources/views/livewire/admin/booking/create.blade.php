@@ -20,9 +20,9 @@
                         <div class="mb-3">
                             <label for="">Availables</label>
                             <select name="type" wire:model.defer="accommodation_id" class="form-control">
+                                @foreach ($types as $type )
                                 <option hidden="true">--- Select Type ---</option>
                                 {{-- <option selected disabled>Select Type</option> --}}
-                                @foreach ($types as $type )
                                     <option value="{{ $type->id }}">{{ $type->title }}</option>
                                 @endforeach
                             </select>
