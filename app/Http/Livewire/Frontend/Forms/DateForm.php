@@ -7,6 +7,7 @@ use App\Models\Booking;
 use Livewire\Component;
 use App\Models\Customer;
 use App\Models\Admin\Accommodation;
+use Illuminate\Support\Facades\Mail;
 
 class DateForm extends Component
 {
@@ -62,13 +63,18 @@ class DateForm extends Component
             'phone' => 'required',
         ]);
 
-        Customer::create([
+        $customer = Customer::create([
             'first_name' => $this->first_name,
             'last_name' => $this->last_name,
             'email' => $this->email,
             'phone' => $this->phone,
             'booking_id' => $booking->id,
         ]);
+        Mail::send('frontend.mail-forms.mail', ['customer' => $customer], function($mail) use($customer){
+            $mail->to($customer->email);
+            $mail->subject('Reservation Details');
+        });
+
         return redirect()->to('/');
     }
 

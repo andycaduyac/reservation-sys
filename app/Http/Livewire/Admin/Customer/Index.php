@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Admin\Customer;
 use App\Models\Booking;
 use Livewire\Component;
 use App\Models\Customer;
+use Illuminate\Support\Facades\Mail;
 
 class Index extends Component
 {
@@ -38,16 +39,22 @@ class Index extends Component
 
         // Execution doesn't reach here if validation fails.
 
-        Customer::create([
+        $customer = Customer::create([
             'first_name' => $this->first_name,
             'last_name' => $this->last_name,
             'email' => $this->email,
             'phone' => $this->phone,
             //  'booking_id' => '1',
         ]);
+        // Mail::send('frontent.mail-forms.mail', ['customer' => $customer], function($mail) use($customer){
+        //     $mail->to($customer->email);
+        //     $mail->subject('Reservation Details');
+        // });
+
         session()->flash('message', 'Added Successfully');
         $this->dispatchBrowserEvent('close-modal');
         $this->resetInput();
+
 
         return redirect()->to('/admin/customers');
     }
