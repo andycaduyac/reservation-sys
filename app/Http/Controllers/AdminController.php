@@ -15,6 +15,10 @@ class AdminController extends Controller
         return view('forms.login');
     }
 
+    public function logInredirect(){
+        return redirect()->to('/admin/login');
+    }
+
     public function check_login(Request $request){
         $request->validate([
             'username' => 'required',

@@ -13,6 +13,11 @@ class Booking extends Model
     protected $guarded =[];
 
     public function accommodation(){
-        return $this->belongsTo(Accommodation::class, 'id');
+        return $this->belongsTo(Accommodation::class, 'accommodation_id', 'id');
+    }
+
+
+    public function customer(){
+        return $this->hasMany(Customer::class, 'booking_id');
     }
 }

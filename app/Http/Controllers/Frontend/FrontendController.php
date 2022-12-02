@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin\Accommodation;
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
@@ -19,6 +20,11 @@ class FrontendController extends Controller
 
     public function contactus(){
         return view('frontend.layouts.contact-us');
+    }
+
+    public function available(){
+        $accommodations = Accommodation::all();
+        return view('frontend.available-accommodations.availables', compact('accommodations'));
     }
     /**
      * Show the form for creating a new resource.

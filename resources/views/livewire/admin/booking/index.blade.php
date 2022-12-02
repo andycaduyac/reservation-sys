@@ -24,7 +24,8 @@
                         <tr>
                             <th>#</th>
                             <th>Title</th>
-                            <th>Price</th>
+                            <th>Booked ID</th>
+                            <th>Type</th>
                             <th>Details</th>
                             <th>Action</th>
                         </tr>
@@ -41,21 +42,22 @@
                         </tfoot> --}}
 
                     <tbody>
-                        {{-- @foreach ($accommodations as $type)
+                        @foreach ($bookings as $book)
                             <tr>
-                                <td>{{$type->id}}</td>
-                                <td>{{$type->title}}</td>
-                                <td>{{$type->price}}</td>
-                                <td>{{$type->details}}</td>
+                                <td>{{$book->id}}</td>
+                                <td>{{$book->book_date}}</td>
+                                <td>{{$book->accommodation_id}}</td>
+                                <td>{{$book->accommodation->title}}</td>
+                                <td>{{$book->accommodation->details}}</td>
                                 <td>
                                     <a href="" class="btn btn-info btn-sm"><i class="fa fa-eye"></i></a>
-                                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editAccommodationModal" wire:click="edit({{$type->id}})">
+                                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editAccommodationModal" wire:click="edit({{$book->id}})">
                                         <i class="fa fa-edit"></i>
                                     </button>
-                                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteAccommodationModal" wire:click="deleteAccommodation({{$type->id}})"><i class="fa fa-trash"></i></button>
+                                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteAccommodationModal" wire:click="deleteBooking({{$book->id}})"><i class="fa fa-trash"></i></button>
                                 </td>
                             </tr>
-                        @endforeach --}}
+                        @endforeach
 
 
                     </tbody>

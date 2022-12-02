@@ -11,7 +11,7 @@ class Customer extends Model
 
     protected $guarded =[];
 
-    public function booking(){
-        return $this->belongsTo(Booking::class, 'id');
+    public function bookings(){
+        return $this->belongsTo(Booking::class, 'booking_id', 'id');
     }
 }

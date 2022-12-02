@@ -31,8 +31,8 @@ use App\Http\Controllers\Frontend\FrontendController;
 
 Route::get('/', [FrontendController::class, 'index']);
 Route::get('/contact-us', [FrontendController::class, 'contactus']);
-
-
+// Route::get('/login', [AdminController::class, 'logInredirect']);
+Route::get('/available-accommodations', [FrontendController::class, 'available']);
 Route::prefix('admin')->group(function() {
     //LOGIN
     Route::get('/login', [AdminController::class, 'login']);

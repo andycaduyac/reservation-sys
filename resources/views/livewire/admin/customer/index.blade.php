@@ -23,8 +23,12 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Title</th>
-                            <th>Price</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            {{-- <th>Booked ID</th> --}}
+                            <th>Date</th>
+                            <th>Type</th>
                             <th>Details</th>
                             <th>Action</th>
                         </tr>
@@ -41,21 +45,24 @@
                         </tfoot> --}}
 
                     <tbody>
-                        {{-- @foreach ($customers as $c)
+                        @foreach ($customers as $c)
                             <tr>
                                 <td>{{$c->id}}</td>
-                                <td>{{$c->title}}</td>
-                                <td>{{$c->price}}</td>
-                                <td>{{$c->details}}</td>
+                                <td>{{$c->first_name}} {{$c->last_name}}</td>
+                                <td>{{$c->email}}</td>
+                                <td>{{$c->phone}}</td>
+                                {{-- <td>{{$c->booking_id}}</td> --}}
+                                <td>{{$c->bookings->book_date}}</td>
+                                <td>{{$c->bookings->accommodation->title}}</td>
+                                <td>{{$c->bookings->accommodation->details}}</td>
                                 <td>
-                                    <a href="" class="btn btn-info btn-sm"><i class="fa fa-eye"></i></a>
                                     <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editCustomerModal" wire:click="edit({{$c->id}})">
                                         <i class="fa fa-edit"></i>
                                     </button>
                                     <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteCustomerModal" wire:click="deleteCustomer({{$c->id}})"><i class="fa fa-trash"></i></button>
                                 </td>
                             </tr>
-                        @endforeach --}}
+                        @endforeach
 
 
                     </tbody>
@@ -74,3 +81,4 @@
         });
     </script>
 @endpush
+{{-- <a href="" class="btn btn-info btn-sm"><i class="fa fa-eye"></i></a> --}}

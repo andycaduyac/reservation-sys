@@ -2,8 +2,9 @@
 
 namespace App\Http\Livewire\Admin\Customer;
 
-use App\Models\Customer;
+use App\Models\Booking;
 use Livewire\Component;
+use App\Models\Customer;
 
 class Index extends Component
 {
@@ -42,7 +43,7 @@ class Index extends Component
             'last_name' => $this->last_name,
             'email' => $this->email,
             'phone' => $this->phone,
-            // 'booking_id' => $this->booking_id,
+            //  'booking_id' => '1',
         ]);
         session()->flash('message', 'Added Successfully');
         $this->dispatchBrowserEvent('close-modal');
@@ -50,18 +51,21 @@ class Index extends Component
 
         return redirect()->to('/admin/customers');
     }
-
+    public function deleteCustomer(int $customer_id){
+        $this->customer_id = $customer_id;
+    }
     public function destroy(){
         Customer::find($this->customer_id)->delete();
         session()->flash('message', 'Deleted Successfully');
         $this->dispatchBrowserEvent('close-modal');
 
-        return redirect()->to('/admin/accommodations');
+        return redirect()->to('/admin/customers');
     }
 
 
     public function render()
     {
-        return view('livewire.admin.customer.index');
+        $customers = Customer::all();
+        return view('livewire.admin.customer.index', compact('customers'));
     }
 }
