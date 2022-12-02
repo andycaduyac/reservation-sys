@@ -16,7 +16,6 @@
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
-
     <!-- Custom styles for this template-->
     <link href="{{asset('admin/css/sb-admin-2.min.css')}}" rel="stylesheet">
     @livewireStyles
@@ -43,7 +42,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link" href="/dashboard">
+                <a class="nav-link" href="/admin/dashboard">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -57,7 +56,7 @@
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
@@ -65,12 +64,22 @@
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        {{-- <h6 class="collapse-header">Data</h6> --}}
                         <a class="collapse-item" href="/admin/accommodations">Accommodations</a>
-                        <a class="collapse-item" href="/admin/bookings">Bookings</a>
                         <a class="collapse-item" href="/admin/customers">Customers Bookings</a>
                     </div>
                 </div>
+            </li> --}}
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="/admin/accommodations">
+                    <i class="fas fa-fw fa-hotel"></i>
+                    <span>Accommodations</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="/admin/customers">
+                    <i class="fas fa-fw fa-user"></i>
+                    <span>Customers Bookings</span>
+                </a>
             </li>
 
             {{-- <!-- Nav Item - Utilities Collapse Menu -->

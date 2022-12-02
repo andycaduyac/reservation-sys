@@ -26,6 +26,7 @@
                             <th>Title</th>
                             <th>Price</th>
                             <th>Details</th>
+                            <th>Image</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -47,6 +48,7 @@
                                 <td>{{$type->title}}</td>
                                 <td>{{$type->price}}</td>
                                 <td>{{$type->details}}</td>
+                                <td>{{$type->image}}</td>
                                 <td>
                                     {{-- <a href="" class="btn btn-info btn-sm"><i class="fa fa-eye"></i></a> --}}
                                     <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editAccommodationModal" wire:click="edit({{$type->id}})">

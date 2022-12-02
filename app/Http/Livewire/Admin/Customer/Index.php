@@ -10,7 +10,7 @@ class Index extends Component
 {
 
     public $first_name, $last_name, $email, $phone, $booking_id;
-    public $customer_id;
+    public $customer_id, $book_id;
 
 
 
@@ -51,11 +51,30 @@ class Index extends Component
 
         return redirect()->to('/admin/customers');
     }
-    public function deleteCustomer(int $customer_id){
+
+    // public function edit(int $customer_id){
+    //     $customer = customer::find($customer_id);
+
+    //     if($customer){
+    //         $this->customer_id =  $customer->id;
+    //         $this->first_name =  $customer->first_name;
+    //         $this->last_name =  $customer->last_name;
+    //         $this->price =  $customer->price;
+
+    //     }else {
+    //         return redirect()->to('/admin/customers');
+    //     }
+    // }
+
+    public function deleteCustomer(int $customer_id, int $book_id){
         $this->customer_id = $customer_id;
+        $this->book_id = $book_id;
     }
+
+
     public function destroy(){
         Customer::find($this->customer_id)->delete();
+        Booking::find($this->book_id)->delete();
         session()->flash('message', 'Deleted Successfully');
         $this->dispatchBrowserEvent('close-modal');
 

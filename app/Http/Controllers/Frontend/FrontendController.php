@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
-use App\Models\Admin\Accommodation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Models\Admin\Accommodation;
+use App\Http\Controllers\Controller;
 
 class FrontendController extends Controller
 {
@@ -22,9 +23,14 @@ class FrontendController extends Controller
         return view('frontend.layouts.contact-us');
     }
 
-    public function available(){
-        $accommodations = Accommodation::all();
-        return view('frontend.available-accommodations.availables', compact('accommodations'));
+    public function available($book_date){
+        // dd($book_date);
+        // $availables = DB::select("SELECT * FROM accommodations WHERE id NOT IN(SELECT accommodation_id FROM bookings WHERE
+        // book_date == '$book_date)");
+        // $accommodations = Accommodation::all();
+        // return response()->json($book_date);
+
+        return view('frontend.available-accommodations.availables', compact('availables'));
     }
     /**
      * Show the form for creating a new resource.

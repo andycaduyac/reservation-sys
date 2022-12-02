@@ -13,7 +13,7 @@
     <div class="card">
         <div class="card-header py-3">
             <h5>Customers
-                <a href="" class="btn btn-success btn-md float-right" data-toggle="modal" data-target="#addCustomerModal">Add New</a>
+                {{-- <a href="" class="btn btn-success btn-md float-right" data-toggle="modal" data-target="#addCustomerModal">Add New</a> --}}
             </h5>
         </div>
         <div class="card-body">
@@ -56,10 +56,10 @@
                                 <td>{{$c->bookings->accommodation->title}}</td>
                                 <td>{{$c->bookings->accommodation->details}}</td>
                                 <td>
-                                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editCustomerModal" wire:click="edit({{$c->id}})">
+                                    {{-- <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editCustomerModal" wire:click="edit({{$c->id}})">
                                         <i class="fa fa-edit"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteCustomerModal" wire:click="deleteCustomer({{$c->id}})"><i class="fa fa-trash"></i></button>
+                                    </button> --}}
+                                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteCustomerModal" wire:click="deleteCustomer({{$c->id}}, {{$c->booking_id}})"><i class="fa fa-ban"></i></button>
                                 </td>
                             </tr>
                         @endforeach

@@ -4,10 +4,12 @@ namespace App\Http\Livewire\Admin\Accommodation;
 
 use Livewire\Component;
 use App\Models\Admin\Accommodation;
+use Livewire\WithFileUploads;
 
 class Index extends Component
 {
-    public $title, $details, $price, $accommodation_id;
+    use WithFileUploads;
+    public $title, $details, $price, $image, $accommodation_id;
 
     // protected $rules = [
     //     'title' => 'required|string',
@@ -19,6 +21,7 @@ class Index extends Component
         $this->title = NULL;
         $this->details = NULL;
         $this->price = NULL;
+        // $this->image = NULL;
 
     }
 
@@ -32,6 +35,7 @@ class Index extends Component
             'title' => 'required|string',
             'details' => 'nullable|string',
             'price' => 'required|numeric',
+            // 'image' => 'required',
         ]);
 
         // Execution doesn't reach here if validation fails.
@@ -40,7 +44,9 @@ class Index extends Component
             'title' => $this->title,
             'details' => $this->details,
             'price' => $this->price,
+            // 'image' => $this->image,
         ]);
+
         session()->flash('message', 'Added Successfully');
         $this->dispatchBrowserEvent('close-modal');
         $this->resetInput();
@@ -50,6 +56,7 @@ class Index extends Component
 
     public function edit(int $accommodation_id){
         $accommodation = Accommodation::find($accommodation_id);
+
         if($accommodation){
             $this->accommodation_id =  $accommodation->id;
             $this->title =  $accommodation->title;
@@ -68,6 +75,7 @@ class Index extends Component
             'details' => 'nullable|string',
             'price' => 'required|numeric',
         ]);
+
 
         Accommodation::where('id', $this->accommodation_id)->update([
             'title' => $this->title,

@@ -1,17 +1,10 @@
 @extends('frontend.base')
 
 @section('content')
+<div class="container-fluid">
+    @include('frontend.booking-forms.date-form')
+</div>
 
-<section id="header" class="jumbotron text-center">
-    <br>
-    <br>
-    <h1 class="display-3 text-white py-2"><strong>JYRA'S RESORT</strong></h1>
-    <p class="lead text-white">Guiwanon, Tubigon, Bohol</p>
-    <br> <br>
-    <p class="text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo, debitis iusto.</p>
-    <br> <br> <br> <br>
-    {{-- <a href="/make-reservation" class="my-3 text-white" id="mk-reserve">Make Reservation</a> --}}
-</section>
 
 
 

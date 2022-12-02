@@ -13,7 +13,10 @@
                     <div class="modal-body">
                         <div class="mb-3">
                             <label class="form-label text-dark" for="date">Date</label>
-                            <input type="text" name="book_date" id="picker" class="form-control" placeholder="Select Date" required>
+                            <input type="text" id="picker" class="form-control" placeholder="Select Date" required>
+                            @error('selectedDate')
+                                <p class="text-danger">{{$message}}</p>
+                            @enderror
                         </div>
 
 
@@ -23,9 +26,13 @@
                                 <option hidden="true">--- Select Type ---</option>
                                 <option selected disabled>Select Type</option>
                                 @foreach ($types as $type)
-                                    <option value="{{ $type->id }}">{{ $type->details }}</option>
+                                    <option value="{{ $type->id }}">{{ $type->title }}</option>
                                 @endforeach
+
                             </select>
+                            @error('accommodation_id')
+                            <p class="text-danger">{{$message}}</p>
+                            @enderror
                         </div>
                     </div>
                     <div class="modal-footer">

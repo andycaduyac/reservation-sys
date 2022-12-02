@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Admin\Booking;
 
 use App\Models\Admin\Accommodation;
 use App\Models\Booking;
+use Carbon\Carbon;
 use Livewire\Component;
 
 class Index extends Component
@@ -28,14 +29,14 @@ class Index extends Component
     public function submit()
     {
         $this->validate([
-            'book_date' => 'required|date',
+            'selectedDate' => 'required',
             'accommodation_id' => 'required',
         ]);
 
         // Execution doesn't reach here if validation fails.
-
-        Booking::create([
-            'book_date' => $this->book_date,
+        // dd( $this->selectedDate[0]);
+        $booking = Booking::create([
+            'book_date' => Carbon::parse($this->selectedDate[0]),
             'accommodation_id' => $this->accommodation_id,
         ]);
 

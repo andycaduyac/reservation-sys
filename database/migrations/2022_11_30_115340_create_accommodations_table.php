@@ -18,7 +18,7 @@ class CreateAccommodationsTable extends Migration
             $table->string('title');
             $table->string('details')->nullable();
             $table->decimal('price', 8,2);
-
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

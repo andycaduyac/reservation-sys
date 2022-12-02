@@ -2,7 +2,7 @@
 @section('content')
 <div class="container-fluid d-flex justify-content-center">
     <div class="row mx-5 my-3">
-            @foreach ($accommodations as $item)
+            @foreach ($availables as $item)
                 <div class="card mx-3 my-3" style="min-width: 40rem;">
                     <div class="card-body">
                         <div class="row">
