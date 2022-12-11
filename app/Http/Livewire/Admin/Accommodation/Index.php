@@ -3,13 +3,15 @@
 namespace App\Http\Livewire\Admin\Accommodation;
 
 use Livewire\Component;
-use App\Models\Admin\Accommodation;
 use Livewire\WithFileUploads;
+use App\Models\Admin\Accommodation;
+use Illuminate\Support\Facades\File;
 
 class Index extends Component
 {
     use WithFileUploads;
     public $title, $details, $price, $image, $accommodation_id;
+    public $new_image;
 
     // protected $rules = [
     //     'title' => 'required|string',
@@ -31,6 +33,7 @@ class Index extends Component
 
     public function submit()
     {
+        $images = new Accommodation();
         $this->validate([
             'title' => 'required|string',
             'details' => 'nullable|string',
@@ -39,13 +42,26 @@ class Index extends Component
         ]);
 
         // Execution doesn't reach here if validation fails.
+        $filename = "";
+        if($this->image) {
+            $filename = $this->image->store('images', 'public');
+        }else {
+            $filename = null;
+        }
 
-        Accommodation::create([
-            'title' => $this->title,
-            'details' => $this->details,
-            'price' => $this->price,
-            // 'image' => $this->image,
-        ]);
+
+        $images->title = $this->title;
+        $images->details = $this->details;
+        $images->price = $this->price;
+        $images->image = $filename;
+        $result = $images->save();
+
+        // Accommodation::create([
+        //     'title' => $this->title,
+        //     'details' => $this->details,
+        //     'price' => $this->price,
+        //     'image' => $this->image,
+        // ]);
 
         session()->flash('message', 'Added Successfully');
         $this->dispatchBrowserEvent('close-modal');
@@ -62,6 +78,7 @@ class Index extends Component
             $this->title =  $accommodation->title;
             $this->details =  $accommodation->details;
             $this->price =  $accommodation->price;
+            $this->image =  $accommodation->image;
 
         }else {
             return redirect()->to('/admin/accommodations');
@@ -70,18 +87,49 @@ class Index extends Component
     }
 
     public function update(){
+        // $images = Accommodation::find()
+        $images = Accommodation::find($this->accommodation_id);
         $this->validate([
             'title' => 'required|string',
             'details' => 'nullable|string',
             'price' => 'required|numeric',
         ]);
 
+        $filename = "";
+        // $destination=public_path('storage\\'.$images->image);
+        if($this->image){
+            $filename = $this->image->store('images', 'public');
+        } else {
+            $filename = $this->null;
+        }
 
-        Accommodation::where('id', $this->accommodation_id)->update([
-            'title' => $this->title,
-            'details' => $this->details,
-            'price' => $this->price,
-        ]);
+
+        // if ($this->new_image) {
+        //     $filename = $this->new_image->store('images', 'public');
+        // } else {
+        //     $filename = $this->image;
+        // }
+
+        $images->title = $this->title;
+        $images->details = $this->details;
+        $images->price = $this->price;
+        $images->image = $filename;
+        $result = $images->save();
+        // if ($result) {
+        //     session()->flash('success', 'Updated Successfully');
+        //     $this->resetField();
+        //     $this->showData = true;
+        //     $this->updateData = false;
+        // } else {
+        //     session()->flash('error', 'Update UnSuccessfully');
+        // }
+
+        // Accommodation::where('id', $this->accommodation_id)->update([
+        //     'title' => $this->title,
+        //     'details' => $this->details,
+        //     'price' => $this->price,
+        //     'image' => $this->image,
+        // ]);
         session()->flash('message', 'Added Successfully');
         $this->dispatchBrowserEvent('close-modal');
         $this->resetInput();

@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use App\Models\Booking;
 use Livewire\Component;
 use App\Models\Customer;
+use Carbon\Exceptions\Exception;
 use App\Models\Admin\Accommodation;
 use Illuminate\Support\Facades\Mail;
 
@@ -47,6 +48,9 @@ class DateForm extends Component
         $this->emit('show');
     }
     public function createBooking(){
+        try{
+
+
         $this->validate([
             'selectedDate' => 'required',
             'accommodation_id' => 'required',
@@ -70,12 +74,17 @@ class DateForm extends Component
             'phone' => $this->phone,
             'booking_id' => $booking->id,
         ]);
+
+
         Mail::send('frontend.mail-forms.mail', ['customer' => $customer], function($mail) use($customer){
             $mail->to($customer->email);
             $mail->subject('Reservation Details');
         });
+        return redirect()->to('/')->with('emailMessage', 'Reservation created. Please check your email.');
+    }catch(Exception $e){
+        return redirect()->to('/')->with('message', 'We cannot send an email at the moment.');
+    }
 
-        return redirect()->to('/');
     }
 
 

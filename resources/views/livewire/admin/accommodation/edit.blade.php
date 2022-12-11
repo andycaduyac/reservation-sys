@@ -34,6 +34,23 @@
                             <label for="">Details</label>
                             <input class="form-control" type="text" wire:model.defer="details">
                         </div>
+                        <div class="mb-3">
+                            {{-- <label for="">Image</label>
+                            <input class="form-control" type="text" wire:model.defer="image"> --}}
+                            <label for="image">Select Image</label>
+                            <input class="form-control" type="file" wire:model.defer="image" style="padding: 3px 5px;">
+
+                            <div wire:loading wire:target="image" wire:key="image">
+                                <i class="fas fa-spinner mt-2 ms-2"></i>
+                                Uploading
+
+                            </div>
+
+                            {{-- @if ($new_image)
+                            <img src="{{$new_image->temporaryUrl()}}" style="width: 200px;height:200px;" alt="">
+                            @endif --}}
+                        </div>
+
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

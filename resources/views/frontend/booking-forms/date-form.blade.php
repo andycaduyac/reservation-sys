@@ -28,5 +28,7 @@
 @extends('frontend.base')
 
 @section('content')
-    <livewire:frontend.forms.date-form />
+    <div class="container-fluid">
+        <livewire:frontend.forms.date-form />
+    </div>
 @endsection

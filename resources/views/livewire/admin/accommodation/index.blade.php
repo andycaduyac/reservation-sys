@@ -6,7 +6,7 @@
     <div class="container">
         <div class="col col-md-12">
             @if (session()->has('message'))
-                <h5 class="alert alert-success">{{ session('message') }}</h5>
+                <h5 class="alert alert-success" id="msg">{{ session('message') }}</h5>
             @endif
         </div>
     </div>
@@ -48,7 +48,9 @@
                                 <td>{{$type->title}}</td>
                                 <td>{{$type->price}}</td>
                                 <td>{{$type->details}}</td>
-                                <td>{{$type->image}}</td>
+                                <td>
+                                    <img src="{{asset('storage')}}/{{$type->image}}" width="100" alt="">
+                                </td>
                                 <td>
                                     {{-- <a href="" class="btn btn-info btn-sm"><i class="fa fa-eye"></i></a> --}}
                                     <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editAccommodationModal" wire:click="edit({{$type->id}})">
@@ -75,5 +77,12 @@
             $('#editAccommodationModal').modal('hide');
             $('#deleteAccommodationModal').modal('hide');
         });
+    </script>
+
+    <script>
+        setTimeout(function() {
+            var ms = document.getElementById("msg");
+            ms.parentNode.removeChild(msg);
+        }, 1500);
     </script>
 @endpush

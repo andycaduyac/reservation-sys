@@ -1,14 +1,14 @@
 @extends('frontend.base')
 
 @section('content')
-    <div class="container">
+    <div class="container-fluid">
         <div class="container-fluid mt-3" id="text-to-right">
-            <h1 class="display-6"> <strong> Contact Us </strong> </h1>
-            <p class="text-muted"> If you have any inquiries, feel free to contact us through the following:</p>
+            <h1 class="display-6 text-white"> <strong> Contact Us </strong> </h1>
+            <p class="text-white"> If you have any inquiries, feel free to contact us through the following:</p>
         </div>
         <div class="body">
             <div class="row mt-5">
-                    <div class="container">
+                    <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-4 mb-3" id="card1">
                                 <a href="tel:09328826688" class="card text-dark">
@@ -48,7 +48,7 @@
             </div>
         </div>
         <div class="container mt-5 p-3" id="message-form">
-            <h4>Visit us: </h4>
+            <h4 class="text-white">Visit us: </h4>
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1168.3710160624078!2d123.95224330583027!3d9.940947386481511!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33aa2f9f5fae5763%3A0xbf1f94bae0d543f0!2sJyra&#39;s%20Resort!5e0!3m2!1sen!2sph!4v1669165088499!5m2!1sen!2sph" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
     </div>
@@ -61,7 +61,8 @@
             transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
             padding: 14px 35px 18px 35px;
             cursor: pointer;
-            height: 12rem;
+            min-height: 12rem;
+            min-width: 30rem;
         }
 
         .card:hover{

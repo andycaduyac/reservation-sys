@@ -63,19 +63,17 @@
                             <label for="">Details</label>
                             <input class="form-control" type="text" wire:model.defer="details">
                         </div>
-                        {{-- <div class="form-group mb-3">
+                        <div class="form-group mb-3">
                             <label for="image">Select Image</label>
                             <input class="form-control" type="file" wire:model.defer="image" style="padding: 3px 5px;">
-                            @error('image') <small class="text-danger">{{ $message }}</small> @enderror
-
                             <div wire:loading wire:target="image" wire:key="image">
                                 <i class="fas fa-spinner mt-2 ms-2"></i>
                                 Uploading
-                                @if ($image)
+                                {{-- @if ($image)
                                     <img src="{{ $image->temporaryUrl() }}" alt="" width="100" class="mt-2">
-                                @endif
+                                @endif --}}
                             </div>
-                        </div> --}}
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
